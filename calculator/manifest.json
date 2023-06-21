@@ -1,0 +1,82 @@
+{
+    "@platforms": ["android", "iPhone", "iPad"],
+    "id": "H55666C82",
+    "name": "myCalc",
+    "version": {
+        "name": "1.0",
+        "code": ""
+    },
+    "description": "",
+    "icons": {
+        "72": "icon.png"
+    },
+    "launch_path": "index.html",
+    "developer": {
+        "name": ""
+        "email": ""
+        "url": ""
+    },
+   
+    },
+    "plus": {
+        "splashscreen": {
+            "autoclose": true,
+            "waiting": true
+        },
+        "popGesture": "close",
+        "runmode": "normal",
+        "signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",
+        "distribute": {
+            "apple": {
+                "appid": "",
+                "mobileprovision": "",
+                "password": "",
+                "p12": "",
+                "devices": "universal",
+                "frameworks":[
+                ]
+            },
+          
+	"dependencies":{
+		"pages": {
+			"index.html": {
+				"href": "index.html",
+				"resources": [
+					"css/calc.css",
+					"js/common.js",
+					"js/calc.js",
+					"images/delete1.png",
+					"js/zepto/event.js",
+					"js/zepto/zepto.min.js",
+					"js/zepto/fx.js",
+					"js/zepto/touch.js",
+					"font/iconfont.woff",
+					"news.html",
+					"calc-gj-v5.0.html"
+				],
+				"priority": 0,
+				"refer": []
+			},
+			"calc-gj-v5.0.html": {
+				"resources": [
+					"js/jquery.min.js",
+					"index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"news.html": {
+				"resources": [
+					"css/calc.css"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"img/delete1.png"
+			]
+		}
+	},"fullscreen":true
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple Budget Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+    <link rel=stylesheet type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
+    <!--title  -->
+    <section class="hero is-primary is-small">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="animated fadeInDown">
+                    Simple Budget Tracker
+                </h1>
+                <h2 class="animated fadeInLeft" class="subtitle">
+                    Fight for what's worth saving! 
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <div id="prompt">
+        <h2>After fixed costs, how much do you have leftover to spend?</h2>
+    </div>
+
+    <!--attempting to put the checkbox, input and button on the same row  -->
+    <!-- <div class="block">
+      <div class="columns"> -->
+    <!-- <div class="column is-10"> -->
+    <div class="container">
+        <fieldset id="categoryCheckbox" class="animated bounceInDown">
+            <!-- <div>
+                <input class="checkbox" type="checkbox" id="catSavings" name="category" value="catSavings">
+                <label for="catSavings">Savings (will allow you to select a percentage of your total to save)</label>
+            </div> -->
+            <div>
+                <input class="checkbox" type="checkbox" id="catFood" name="category" value="catFood">
+                <label for="catFood">Food</label>
+            </div>
+            <div>
+                <input class="checkbox" type="checkbox" id="catClothing" name="category" value="catClothing">
+                <label for="catClothing">Clothing</label>
+            </div>
+            <div>
+                <input class="checkbox" type="checkbox" id="catEntertainment" name="category" value="catEntertainment">
+                <label for="catEntertainment">Entertainment</label>
+            </div>
+            <div>
+                <input class="checkbox" type="checkbox" id="catTransportation" name="category" value="catTransportation">
+                <label for="catTransportation">Transportation</label>
+            </div>
+            <div>
+                <input class="checkbox" type="checkbox" id="catOther" name="category" value="catOther">
+                <label for="catOther">Other</label>
+            </div>
+    </div>
+    </div>
+    </fieldset>
+    <!-- raido button set to be hidden until stage 3 -->
+    <div class="container">
+        <div id="radioButtons">
+            <input type="radio" class="radioB foodR" id="radioFood" name="category" value="catFood">
+            <label for="radioFood" class="radioB foodR">Food</label>
+
+            <input type="radio" class="radioB clothingR" id="radioClothing" name="category" value="catClothing">
+            <label for="radioClothing" class="radioB clothingR">Clothing</label>
+
+            <input type="radio" class="radioB entertainmentR" id="radioEntertainment" name="category" value="catEntertainment">
+            <label for="radioEntertainment" class="radioB entertainmentR">Entertainment</label>
+
+            <input type="radio" class="radioB transportationR" id="radioTransportation" name="category" value="catTransportation">
+            <label for="radioTransportation" class="radioB transportationR">Transportation</label>
+
+            <input type="radio" class="radioB otherR" id="radioOther" name="category" value="catOther">
+            <label for="radioOther" class="radioB otherR">Other</label>
+        </div>
+    </div>
+
+    <!-- User percentage allocation interface  -->
+    <div class="container">
+        <fieldset id="percentageAllocator" class="animated bounceInDown">
+            <div>
+                <label id="catSavingsLabel" for="catSavings" class="inputP savingsP">Savings (used to determine how much you'll save for next month): </label>
+                <input id="catSavingsInput" type="text" class="inputP savingsP" placeholder="%" max="100" maxlength="3" size="3" value="0">
+                <span id="catSavingsConverted"></span>
+            </div>
+            <div>
+                <label id="catFoodLabel" for="catFood" class="inputP foodP">Food: </label>
+                <input id="catFoodInput" type="text" class="inputP foodP" placeholder="%" max="100" maxlength="3" size="3" value="0">
+                <span id="catFoodConverted"></span>
+            </div>
+            <div>
+                <label id="catClothingLabel" for="catClothing" class="inputP clothingP">Clothing: </label>
+                <input id="catClothingInput" type="text" class="inputP clothingP" placeholder="%" max="100" maxlength="3" size="3" value="0">
+                <span id="catClothingConverted"></span>
+            </div>
+            <div>
+                <label id="catEntertainmentLabel" for="catEntertainment" class="inputP entertainmentP">Entertainment: </label>
+                <input id="catEntertainmentInput" type="text" class="inputP entertainmentP" placeholder="%" max="100" maxlength="3" size="3"
+                    value="0">
+                <span id="catEntertainmentConverted"></span>
+            </div>
+            <div>
+                <label id="catTransportationLabel" for="catTransportation" class="inputP transportationP">Transportation: </label>
+                <input id="catTransportationInput" type="text" class="inputP transportationP" placeholder="%" max="100" maxlength="3" size="3"
+                    value="0">
+                <span id="catTransportationConverted"></span>
+            </div>
+            <div>
+                <label id="catOtherLabel" for="catOther" class="inputP otherP">Other: </label>
+                <input id="catOtherInput" type="text" class="inputP otherP" placeholder="%" max="100" maxlength="3" size="3" value="0">
+                <span id="catOtherConverted"></span>
+            </div>
+        </fieldset>
+    </div>
+    <!--reformat this userInput to fit Bulma  -->
+    <div class="block">
+        <div class="columns">
+            <div class="column is-10">
+                <div class="field">
+                    <!-- <label class="label">After fixed costs how much do you have leftover to spend?</label> -->
+                    <div class="container">
+                        <div class="control">
+                            <input id="userInputDollars" class="input animated zoomInDown" type="number" step=0.01 placeholder="$ Dollar Amount $">
+                        </div>
+                    </div>
+                    <h3>
+                        <span id="additionalInfo"></span>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <input id="userInputDollars" type="number"> -->
+    <!-- <button id="submit" type="submit">Submit</button> -->
+    <div class="block">
+        <div class="columns">
+            <div class="container">
+                <div class="column is-2">
+                    <div class="container">
+                        <a id="submit" class="button is-primary is-outlined is-auto">Submit</a>
+                        <a id="percentageAllocatorButton" class="button is-primary is-outlined is-auto">Submit</a>
+                        <a id="reset" class="button is-danger is-outlined is-auto">Reset</a>
+                        <div class="pieBox">
+                            <canvas id="myChart"></canvas>
+                            <!-- piechart-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+        <!-- <input id="userInputDollars" type="number"> -->
+        <!-- <button id="submit" type="submit">Submit</button> -->
+        <div class="container">
+            <!-- <span id="spendingMoney"></span> -->
+            <div id="output"></div>
+
+        </div>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="content has-text-centered">
+                    <p>
+                        <strong>Good + Simple Budget Tracker</strong> by Jon, Marcus, Al + Nate. Copyright 2018
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+
+        <script src="./assets/javascript/logic.js">
+        </script>
+</body>
+
+</html>
